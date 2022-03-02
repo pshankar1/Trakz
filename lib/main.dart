@@ -61,7 +61,13 @@ class _LoginDemoState extends State<LoginDemo> {
 
             Container(
               width: 400,
-              height: 80,
+              height: 50,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color.fromARGB(71, 19, 220, 109),
+                  border: Border(
+                    bottom: BorderSide(color: Color(0x13DC6F)),
+                  )),
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
@@ -74,6 +80,7 @@ class _LoginDemoState extends State<LoginDemo> {
             const SizedBox(
               height: 20,
             ),
+            //Registration Button
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -113,8 +120,8 @@ class _LoginDemoState extends State<LoginDemo> {
             const SizedBox(
               height: 30,
             ),
+            //Login Button
             Container(
-              //Login Button
               height: 80,
               width: 270,
               decoration: BoxDecoration(
@@ -128,13 +135,16 @@ class _LoginDemoState extends State<LoginDemo> {
                 },
                 child:
                     new Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                  new Text(
+                  const Text(
                     "Continue With",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 19, 220, 111),
+                        fontWeight: FontWeight.w500),
                     textScaleFactor: 1.9,
                   ),
                   Padding(
                       padding: EdgeInsets.only(
-                        left: 15,
+                        left: 10,
                       ),
                       child: Image(
                         image: spotify,
