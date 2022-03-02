@@ -41,40 +41,74 @@ class _LoginDemoState extends State<LoginDemo> {
                 child: Image(image: icon),
               ),
             ),
-            const SizedBox(
-              height: 40,
-            ),
-
-            //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
 
             Container(
-              width: 400,
-              height: 80,
+                width: 280,
+                height: 110,
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(
+                  color: Color.fromARGB(255, 243, 217, 177),
+                  width: 3.0,
+                ))),
+                child: Center(
+                    child: Text(
+                  "Hi\nThis is Trakz",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    fontSize: 48,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ))),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              width: 500,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(71, 19, 220, 109),
+                  border: Border(
+                    bottom: BorderSide(
+                        color: Color.fromARGB(139, 19, 220, 109), width: 3.0),
+                  )),
               child: TextField(
                 decoration: InputDecoration(
                     fillColor: Color.fromARGB(255, 88, 143, 90),
-                    border: OutlineInputBorder(),
                     labelText: 'Email',
-                    hintText: 'wussyaname'),
+                    labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                    hintText: 'wussyaname',
+                    hintStyle: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    )),
               ),
             ),
-
+            const SizedBox(
+              height: 20,
+            ),
             Container(
-              width: 400,
+              width: 500,
               height: 50,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
                   color: Color.fromARGB(71, 19, 220, 109),
                   border: Border(
-                    bottom: BorderSide(color: Color(0x13DC6F)),
+                    bottom: BorderSide(
+                        color: Color.fromARGB(139, 19, 220, 109), width: 3.0),
                   )),
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
                     fillColor: Color.fromARGB(255, 88, 143, 90),
                     labelText: 'Password',
-                    hintText: 'shhh we won\'t tell'),
+                    labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                    hintText: 'shhh we won\'t tell',
+                    hintStyle: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    )),
               ),
             ),
             const SizedBox(
@@ -102,8 +136,7 @@ class _LoginDemoState extends State<LoginDemo> {
               height: 80,
               width: 270,
               decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Color.fromARGB(255, 120, 120, 154), width: 5.0),
+                  color: Color.fromARGB(255, 243, 217, 177),
                   borderRadius: BorderRadius.circular(40)),
               child: OutlineButton(
                 onPressed: () {
@@ -113,7 +146,9 @@ class _LoginDemoState extends State<LoginDemo> {
                 child: const Text(
                   'Login',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255), fontSize: 28),
+                      color: Color.fromARGB(255, 40, 40, 54),
+                      fontSize: 28,
+                      fontWeight: FontWeight.w900),
                 ),
               ),
             ),
