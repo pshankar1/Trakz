@@ -28,6 +28,8 @@ class _LoginDemoState extends State<LoginDemo> {
   @override
   Widget build(BuildContext context) {
     AssetImage icon = AssetImage('images/trakz.png');
+    AssetImage spotify = AssetImage('images/spotify.png');
+
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 40, 40, 54),
       body: SingleChildScrollView(
@@ -53,7 +55,7 @@ class _LoginDemoState extends State<LoginDemo> {
                     fillColor: Color.fromARGB(255, 88, 143, 90),
                     border: OutlineInputBorder(),
                     labelText: 'Email',
-                    hintText: 'Enter valid email id as abc@gmail.com'),
+                    hintText: 'wussyaname'),
               ),
             ),
 
@@ -66,7 +68,7 @@ class _LoginDemoState extends State<LoginDemo> {
                     border: OutlineInputBorder(),
                     fillColor: Color.fromARGB(255, 88, 143, 90),
                     labelText: 'Password',
-                    hintText: 'Enter secure password'),
+                    hintText: 'shhh we won\'t tell'),
               ),
             ),
             const SizedBox(
@@ -94,7 +96,7 @@ class _LoginDemoState extends State<LoginDemo> {
               width: 270,
               decoration: BoxDecoration(
                   border: Border.all(
-                      color: Color.fromARGB(255, 19, 220, 111), width: 5.0),
+                      color: Color.fromARGB(255, 120, 120, 154), width: 5.0),
                   borderRadius: BorderRadius.circular(40)),
               child: OutlineButton(
                 onPressed: () {
@@ -104,12 +106,43 @@ class _LoginDemoState extends State<LoginDemo> {
                 child: const Text(
                   'Login',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 19, 220, 111), fontSize: 28),
+                      color: Color.fromARGB(255, 255, 255, 255), fontSize: 28),
                 ),
               ),
             ),
             const SizedBox(
-              height: 130,
+              height: 30,
+            ),
+            Container(
+              //Login Button
+              height: 80,
+              width: 270,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Color.fromARGB(255, 19, 220, 111), width: 5.0),
+                  borderRadius: BorderRadius.circular(40)),
+              child: OutlineButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => HomePage()));
+                },
+                child:
+                    new Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                  new Text(
+                    "Continue With",
+                    textScaleFactor: 1.9,
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(
+                        left: 15,
+                      ),
+                      child: Image(
+                        image: spotify,
+                        height: 55,
+                        width: 55,
+                      ))
+                ]),
+              ),
             ),
           ],
         ),
