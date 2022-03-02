@@ -31,165 +31,176 @@ class _LoginDemoState extends State<LoginDemo> {
     AssetImage spotify = AssetImage('images/spotify.png');
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 40, 40, 54),
+      backgroundColor: Color.fromARGB(255, 89, 89, 114),
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 60.0),
-              child: Center(
-                child: Image(image: icon),
-              ),
-            ),
-
-            Container(
-                width: 280,
-                height: 110,
-                decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                  color: Color.fromARGB(255, 243, 217, 177),
-                  width: 3.0,
-                ))),
+        child: Card(
+          margin: EdgeInsets.symmetric(horizontal: 500, vertical: 100),
+          color: Color.fromARGB(255, 40, 40, 54),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(60)),
+          elevation: 10.0,
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 60.0),
                 child: Center(
-                    child: Text(
-                  "Hi\nThis is Trakz",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    fontSize: 48,
-                    fontWeight: FontWeight.w900,
-                  ),
-                ))),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              width: 500,
-              height: 50,
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(71, 19, 220, 109),
-                  border: Border(
-                    bottom: BorderSide(
-                        color: Color.fromARGB(139, 19, 220, 109), width: 3.0),
-                  )),
-              child: TextField(
-                decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 88, 143, 90),
-                    labelText: 'Email',
-                    labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    hintText: 'wussyaname',
-                    hintStyle: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    )),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: 500,
-              height: 50,
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(71, 19, 220, 109),
-                  border: Border(
-                    bottom: BorderSide(
-                        color: Color.fromARGB(139, 19, 220, 109), width: 3.0),
-                  )),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    fillColor: Color.fromARGB(255, 88, 143, 90),
-                    labelText: 'Password',
-                    labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    hintText: 'shhh we won\'t tell',
-                    hintStyle: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    )),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            //Registration Button
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text(
-                'New Here? Come Sign Up!',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 19, 220, 111),
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            //Login Button Below
-            Container(
-              //Login Button
-              height: 80,
-              width: 270,
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 243, 217, 177),
-                  borderRadius: BorderRadius.circular(40)),
-              child: OutlineButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
-                },
-                child: const Text(
-                  'Login',
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 40, 40, 54),
-                      fontSize: 28,
-                      fontWeight: FontWeight.w900),
+                  child: Image(image: icon),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            //Login Button
-            Container(
-              height: 80,
-              width: 270,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Color.fromARGB(255, 19, 220, 111), width: 5.0),
-                  borderRadius: BorderRadius.circular(40)),
-              child: OutlineButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
-                },
-                child:
-                    new Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                  const Text(
-                    "Continue With",
+
+              Container(
+                  width: 280,
+                  height: 110,
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(
+                    color: Color.fromARGB(255, 243, 217, 177),
+                    width: 6.0,
+                  ))),
+                  child: Center(
+                      child: Text(
+                    "Hi\nThis is Trakz",
                     style: TextStyle(
-                        color: Color.fromARGB(255, 19, 220, 111),
-                        fontWeight: FontWeight.w500),
-                    textScaleFactor: 1.9,
-                  ),
-                  Padding(
-                      padding: EdgeInsets.only(
-                        left: 10,
-                      ),
-                      child: Image(
-                        image: spotify,
-                        height: 55,
-                        width: 55,
-                      ))
-                ]),
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontSize: 48,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ))),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ],
+              Container(
+                width: 500,
+                height: 50,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(71, 19, 220, 109),
+                    border: Border(
+                      bottom: BorderSide(
+                          color: Color.fromARGB(139, 19, 220, 109), width: 3.0),
+                    )),
+                child: TextField(
+                  decoration: InputDecoration(
+                      fillColor: Color.fromARGB(255, 88, 143, 90),
+                      labelText: '  Email',
+                      labelStyle: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                      hintText: '       wussyaname',
+                      hintStyle: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      )),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 500,
+                height: 50,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(71, 19, 220, 109),
+                    border: Border(
+                      bottom: BorderSide(
+                          color: Color.fromARGB(139, 19, 220, 109), width: 3.0),
+                    )),
+                child: TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      fillColor: Color.fromARGB(255, 88, 143, 90),
+                      labelText: '    Password',
+                      labelStyle: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      ),
+                      hintText: '         shhh we won\'t tell',
+                      hintStyle: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                      )),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              //Registration Button
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  'New Here? Come Sign Up!',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 19, 220, 111),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              //Login Button Below
+              Container(
+                //Login Button
+                height: 80,
+                width: 270,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 243, 217, 177),
+                    borderRadius: BorderRadius.circular(40)),
+                child: OutlineButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => HomePage()));
+                  },
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 40, 40, 54),
+                        fontSize: 28,
+                        fontWeight: FontWeight.w900),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              //Login Button
+              Container(
+                height: 80,
+                width: 270,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromARGB(255, 19, 220, 111), width: 5.0),
+                    borderRadius: BorderRadius.circular(40)),
+                child: OutlineButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => HomePage()));
+                  },
+                  child: new Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        const Text(
+                          "Continue With",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 19, 220, 111),
+                              fontWeight: FontWeight.w500),
+                          textScaleFactor: 1.9,
+                        ),
+                        Padding(
+                            padding: EdgeInsets.only(
+                              left: 10,
+                            ),
+                            child: Image(
+                              image: spotify,
+                              height: 55,
+                              width: 55,
+                            ))
+                      ]),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
         ),
       ),
     );
