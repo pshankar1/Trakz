@@ -27,29 +27,24 @@ class LoginDemo extends StatefulWidget {
 class _LoginDemoState extends State<LoginDemo> {
   @override
   Widget build(BuildContext context) {
+    AssetImage icon = AssetImage('images/trakz.png');
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 81, 133, 107),
-      appBar: AppBar(
-        title: const Text("Login Page"),
-      ),
+      backgroundColor: Color.fromARGB(255, 40, 40, 54),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top: 60.0),
               child: Center(
-                child: Container(
-                    width: 200,
-                    height: 150,
-                    /*decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(50.0)),*/
-                    child: Image.asset('trakz.png')),
+                child: Image(image: icon),
               ),
+            ),
+            const SizedBox(
+              height: 40,
             ),
             const Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: EdgeInsets.symmetric(horizontal: 500, vertical: 10),
               child: TextField(
                 decoration: InputDecoration(
                     fillColor: Color.fromARGB(255, 88, 143, 90),
@@ -58,10 +53,9 @@ class _LoginDemoState extends State<LoginDemo> {
                     hintText: 'Enter valid email id as abc@gmail.com'),
               ),
             ),
+
             const Padding(
-              padding:
-                  EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
-              //padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: EdgeInsets.symmetric(horizontal: 500, vertical: 10),
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
@@ -71,37 +65,48 @@ class _LoginDemoState extends State<LoginDemo> {
                     hintText: 'Enter secure password'),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
               child: const Text(
-                'New User? Create Account',
+                'New Here? Come Sign Up!',
                 style: TextStyle(
-                    color: Color.fromARGB(255, 96, 165, 98), fontSize: 15),
+                    color: Color.fromARGB(255, 19, 220, 111),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            //Login Button Below
             Container(
-              height: 50,
-              width: 250,
+              //Login Button
+              height: 80,
+              width: 270,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 5, 138, 98),
-                  borderRadius: BorderRadius.circular(20)),
-              child: TextButton(
+                  border: Border.all(
+                      color: Color.fromARGB(255, 19, 220, 111), width: 5.0),
+                  borderRadius: BorderRadius.circular(40)),
+              child: OutlineButton(
                 onPressed: () {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => HomePage()));
                 },
                 child: const Text(
                   'Login',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 19, 220, 111), fontSize: 28),
                 ),
               ),
             ),
             const SizedBox(
               height: 130,
             ),
-            const Text('Login')
           ],
         ),
       ),
