@@ -42,9 +42,12 @@ class _LoginDemoState extends State<LoginDemo> {
             const SizedBox(
               height: 40,
             ),
-            const Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 500, vertical: 10),
+
+            //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+
+            Container(
+              width: 400,
+              height: 80,
               child: TextField(
                 decoration: InputDecoration(
                     fillColor: Color.fromARGB(255, 88, 143, 90),
@@ -54,8 +57,9 @@ class _LoginDemoState extends State<LoginDemo> {
               ),
             ),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 500, vertical: 10),
+            Container(
+              width: 400,
+              height: 80,
               child: TextField(
                 obscureText: true,
                 decoration: InputDecoration(
