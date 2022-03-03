@@ -27,8 +27,8 @@ class LoginDemo extends StatefulWidget {
 class _LoginDemoState extends State<LoginDemo> {
   @override
   Widget build(BuildContext context) {
-    AssetImage icon = AssetImage('images/trakz.png');
-    AssetImage spotify = AssetImage('images/spotify.png');
+    AssetImage icon = const AssetImage('images/trakz.png');
+    AssetImage spotify = const AssetImage('images/spotify.png');
 
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 89, 89, 114),
@@ -51,13 +51,13 @@ class _LoginDemoState extends State<LoginDemo> {
               Container(
                   width: 280,
                   height: 110,
-                  decoration: BoxDecoration(
+                  decoration:  const BoxDecoration(
                       border: Border(
                           bottom: BorderSide(
                     color: Color.fromARGB(255, 243, 217, 177),
                     width: 6.0,
                   ))),
-                  child: Center(
+                  child: const Center(
                       child: Text(
                     "Hi\nThis is Trakz",
                     style: TextStyle(
@@ -72,13 +72,13 @@ class _LoginDemoState extends State<LoginDemo> {
               Container(
                 width: 500,
                 height: 50,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Color.fromARGB(71, 19, 220, 109),
                     border: Border(
                       bottom: BorderSide(
                           color: Color.fromARGB(139, 19, 220, 109), width: 3.0),
                     )),
-                child: TextField(
+                child: const TextField(
                   decoration: InputDecoration(
                       fillColor: Color.fromARGB(255, 88, 143, 90),
                       labelText: '  Email',
@@ -97,13 +97,13 @@ class _LoginDemoState extends State<LoginDemo> {
               Container(
                 width: 500,
                 height: 50,
-                decoration: BoxDecoration(
+                decoration: const  BoxDecoration(
                     color: Color.fromARGB(71, 19, 220, 109),
                     border: Border(
                       bottom: BorderSide(
                           color: Color.fromARGB(139, 19, 220, 109), width: 3.0),
                     )),
-                child: TextField(
+                child: const TextField(
                   obscureText: true,
                   decoration: InputDecoration(
                       fillColor: Color.fromARGB(255, 88, 143, 90),
@@ -174,7 +174,7 @@ class _LoginDemoState extends State<LoginDemo> {
                     Navigator.push(
                         context, MaterialPageRoute(builder: (_) => HomePage()));
                   },
-                  child: new Row(
+                  child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         const Text(
