@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "538962506125",
+    "project_id": "trak-a511b",
+    "storage_bucket": "trak-a511b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538962506125:android:a3365b31bed1a50d308dc4",
+        "android_client_info": {
+          "package_name": "com.example.trak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538962506125-2ctghfe4ntum23ac84spe39m5ntnqr5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3SXV9NW1owtRDFf4rnep083KW8ueBIwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538962506125-2ctghfe4ntum23ac84spe39m5ntnqr5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
