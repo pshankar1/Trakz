@@ -6,6 +6,9 @@ import 'package:firebase_signin/screens/signup_screen.dart';
 import 'package:firebase_signin/utils/color_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_auth/flutter_web_auth.dart';
+import 'dart:convert' show jsonDecode;
+import 'package:flutter/services.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -17,6 +20,26 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
+
+  void authenticate() async {
+    final callbackUrlScheme = 'trakz';
+// Construct the url
+    final url = Uri.https('accounts.spotify.com', '/authorize?', {
+      'response_type': 'code',
+      'client_id': 'fe57c1ebb2544268b21d17d614e449fe',
+      'redirect_uri': 'trakz:/',
+      'scope': 'email',
+    });
+    try {
+      final result = await FlutterWebAuth.authenticate(
+          url: url.toString(), callbackUrlScheme: callbackUrlScheme);
+      print("Got Result ");
+    } on PlatformException catch (e) {
+      print("Got Error ");
+      ;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +72,13 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(
                   height: 5,
                 ),
+                FlatButton(
+                  child: Text('Authenticate'),
+                  onPressed: () {
+                    //calling authenticate
+                    authenticate();
+                  },
+                ),
                 forgetPassword(context),
                 firebaseUIButton(context, "Sign In", () {
                   FirebaseAuth.instance
@@ -56,8 +86,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
                   }).onError((error, stackTrace) {
                     if (kDebugMode) {
                       print("Error ${error.toString()}");
@@ -104,8 +136,8 @@ class _SignInScreenState extends State<SignInScreen> {
           style: TextStyle(color: Colors.white70),
           textAlign: TextAlign.right,
         ),
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const ResetPassword())),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ResetPassword())),
       ),
     );
   }
