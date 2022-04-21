@@ -7,8 +7,9 @@ import 'package:firebase_signin/utils/color_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
-import 'dart:convert' show jsonDecode;
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -20,23 +21,46 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
-
-  void authenticate() async {
+  late String result;
+  Future<String> authenticate() async {
     final callbackUrlScheme = 'trakz';
 // Construct the url
-    final url = Uri.https('accounts.spotify.com', '/authorize?', {
+    final url = Uri.https('accounts.spotify.com', '/authorize', {
       'response_type': 'code',
       'client_id': 'fe57c1ebb2544268b21d17d614e449fe',
       'redirect_uri': 'trakz:/',
-      'scope': 'email',
+      'scope': 'user-read-email',
     });
     try {
-      final result = await FlutterWebAuth.authenticate(
+      print(url);
+      result = await FlutterWebAuth.authenticate(
           url: url.toString(), callbackUrlScheme: callbackUrlScheme);
       print("Got Result ");
     } on PlatformException catch (e) {
       print("Got Error ");
       ;
+    }
+    return result;
+  }
+
+  Future<Map<String, dynamic>> getUser() async {
+    if (result == null) result = await authenticate();
+    var header = {
+      "authorization": "Bearer $result",
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+    final _endpoint = 'api.spotify.com';
+    var tail = '/v1/me';
+    var url = Uri.https(_endpoint, tail);
+    print(url);
+    var response = await http.get(url, headers: header);
+    if (response.statusCode == 200) {
+      var jsonResponse =
+          convert.jsonDecode(response.body) as Map<String, dynamic>;
+      return jsonResponse;
+    } else {
+      return {"requestfailed": response.statusCode};
     }
   }
 
