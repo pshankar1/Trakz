@@ -29,7 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
       'response_type': 'code',
       'client_id': 'fe57c1ebb2544268b21d17d614e449fe',
       'redirect_uri': 'trakz://callback/',
-      'scope': 'user-read-email',
+      'scope': 'user-library-modify',
     });
     try {
       print(url);
