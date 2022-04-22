@@ -28,7 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
     final url = Uri.https('accounts.spotify.com', '/authorize', {
       'response_type': 'code',
       'client_id': 'fe57c1ebb2544268b21d17d614e449fe',
-      'redirect_uri': 'trakz:/',
+      'redirect_uri': 'trakz://callback/',
       'scope': 'user-read-email',
     });
     try {
