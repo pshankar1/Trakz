@@ -22,13 +22,14 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   late String result;
+
   Future<String> authenticate() async {
     final callbackUrlScheme = 'trakz';
 // Construct the url
     final url = Uri.https('accounts.spotify.com', '/authorize', {
       'response_type': 'code',
       'client_id': 'fe57c1ebb2544268b21d17d614e449fe',
-      'redirect_uri': 'trakz:/',
+      'redirect_uri': 'trakz://callback/',
       'scope': 'user-read-email',
     });
     try {
