@@ -10,6 +10,7 @@ import 'package:flutter_web_auth/flutter_web_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+import 'package:spotify_sdk/spotify_sdk.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -22,20 +23,20 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   late String result;
-
   Future<String> authenticate() async {
     final callbackUrlScheme = 'trakz';
 // Construct the url
     final url = Uri.https('accounts.spotify.com', '/authorize', {
       'response_type': 'code',
       'client_id': 'fe57c1ebb2544268b21d17d614e449fe',
-      'redirect_uri': 'trakz://callback/',
+      'redirect_uri': 'trakz:/',
       'scope': 'user-read-email',
     });
     try {
       print(url);
-      result = await FlutterWebAuth.authenticate(
-          url: url.toString(), callbackUrlScheme: callbackUrlScheme);
+      result = (await SpotifySdk.connectToSpotifyRemote(
+          clientId: "fe57c1ebb2544268b21d17d614e449fe",
+          redirectUrl: "trakz://callback/")) as String;
       print("Got Result ");
     } on PlatformException catch (e) {
       print("Got Error ");
