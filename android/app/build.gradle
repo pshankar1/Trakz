@@ -28,7 +28,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     lintOptions {                                                         
-        checkReleaseBuilds false  
+        checkReleaseBuilds false
     }       
     compileSdkVersion flutter.compileSdkVersion
 
@@ -50,8 +50,8 @@ android {
         applicationId "com.example.trak"
         minSdkVersion flutter.minSdkVersion
         minSdkVersion 19
-        //targetSdkVersion flutter.targetSdkVersion
-        targetSdkVersion 28
+        targetSdkVersion flutter.targetSdkVersion
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true;
@@ -71,6 +71,12 @@ flutter {
 }
 
 dependencies {
+
+    implementation 'com.spotify.android:auth:1.2.5' // Maven dependency
+
+    implementation 'androidx.browser:browser:1.0.0'
+
+
     implementation 'com.google.firebase:firebase-analytics'
     implementation platform('com.google.firebase:firebase-bom:29.2.1')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

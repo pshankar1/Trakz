@@ -38,6 +38,7 @@ dependencies:
   flutter_web_auth: ^0.4.1
   http: ^0.13.4
   spotify_sdk: ^2.2.0
+  flutter_dotenv: ^5.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

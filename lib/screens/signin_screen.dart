@@ -23,6 +23,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
   late String result;
+
   Future<String> authenticate() async {
     final callbackUrlScheme = 'trakz';
 // Construct the url
@@ -34,9 +35,8 @@ class _SignInScreenState extends State<SignInScreen> {
     });
     try {
       print(url);
-      result = (await SpotifySdk.connectToSpotifyRemote(
-          clientId: "fe57c1ebb2544268b21d17d614e449fe",
-          redirectUrl: "trakz://callback/")) as String;
+      result = await FlutterWebAuth.authenticate(
+          url: url.toString(), callbackUrlScheme: callbackUrlScheme);
       print("Got Result ");
     } on PlatformException catch (e) {
       print("Got Error ");
