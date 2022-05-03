@@ -2,17 +2,6 @@
 
 A new Flutter project.
 
-## Getting Started
+Our app Trakz allows you to sign up, with an email or spotify, or sign in with your current account. 
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# trak
-# trak
+The ticket master screen, concerts, calls for get API which it parses from static_values and pulls the information from the API to give events, specifically concerts, and displays the event name, date, and url to the ticket master page for the user to buy. 
