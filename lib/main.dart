@@ -1,4 +1,11 @@
+import 'dart:math';
+
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_signin/model/modeltest.dart';
+import 'package:firebase_signin/model/ticket_master_class.dart';
+import 'package:firebase_signin/screens/apiTest.dart';
+import 'package:firebase_signin/screens/concerts.dart';
+import 'package:firebase_signin/screens/home_screen.dart';
 import 'package:firebase_signin/screens/signin_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignInScreen(),
+      home: SignInScreen(),
     );
   }
 }

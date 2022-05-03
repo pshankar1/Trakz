@@ -6,6 +6,10 @@ import 'package:firebase_signin/screens/signup_screen.dart';
 import 'package:firebase_signin/utils/color_utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_auth/flutter_web_auth.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -17,6 +21,49 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
+  late String result;
+  Future<String> authenticate() async {
+    final callbackUrlScheme = 'trakz';
+// Construct the url
+    final url = Uri.https('accounts.spotify.com', '/authorize', {
+      'response_type': 'code',
+      'client_id': 'fe57c1ebb2544268b21d17d614e449fe',
+      'redirect_uri': 'trakz:/',
+      'scope': 'user-read-email',
+    });
+    try {
+      print(url);
+      result = await FlutterWebAuth.authenticate(
+          url: url.toString(), callbackUrlScheme: callbackUrlScheme);
+      print("Got Result ");
+    } on PlatformException catch (e) {
+      print("Got Error ");
+      ;
+    }
+    return result;
+  }
+
+  Future<Map<String, dynamic>> getUser() async {
+    if (result == null) result = await authenticate();
+    var header = {
+      "authorization": "Bearer $result",
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+    final _endpoint = 'api.spotify.com';
+    var tail = '/v1/me';
+    var url = Uri.https(_endpoint, tail);
+    print(url);
+    var response = await http.get(url, headers: header);
+    if (response.statusCode == 200) {
+      var jsonResponse =
+          convert.jsonDecode(response.body) as Map<String, dynamic>;
+      return jsonResponse;
+    } else {
+      return {"requestfailed": response.statusCode};
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +82,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 20, MediaQuery.of(context).size.height * 0.2, 20, 0),
             child: Column(
               children: <Widget>[
-                logoWidget("assets/images/logo1.png"),
+                //logoWidget("assets/images/logo1.png"),
                 const SizedBox(
                   height: 30,
                 ),
@@ -49,6 +96,13 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(
                   height: 5,
                 ),
+                TextButton(
+                  child: Text('Authenticate'),
+                  onPressed: () {
+                    //calling authenticate
+                    authenticate();
+                  },
+                ),
                 forgetPassword(context),
                 firebaseUIButton(context, "Sign In", () {
                   FirebaseAuth.instance
@@ -56,8 +110,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()));
                   }).onError((error, stackTrace) {
                     if (kDebugMode) {
                       print("Error ${error.toString()}");
@@ -104,8 +160,8 @@ class _SignInScreenState extends State<SignInScreen> {
           style: TextStyle(color: Colors.white70),
           textAlign: TextAlign.right,
         ),
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const ResetPassword())),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ResetPassword())),
       ),
     );
   }
